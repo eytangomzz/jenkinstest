@@ -13,7 +13,7 @@ pipeline {
                     def nodesMap = [:]
                     nodes.each {
                         println("test3")
-                        item ->
+                        # item ->
                         nodesMap[item] = {
                             stage(item) {
                                 node(item) {
@@ -55,7 +55,7 @@ pipeline {
                             }
                         }
                     }
-                    // parallel nodesMap
+                    parallel nodesMap
                   }
                  
              }
