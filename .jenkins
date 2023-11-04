@@ -11,7 +11,8 @@ pipeline {
                     println(nodes)
                     println("test")
                     def nodesMap = [:]
-                    nodes.each { item ->
+                    nodes.each { 
+                        item ->
                         nodesMap[item] = {
                             stage(item) {
                                 node(item) {
