@@ -9,6 +9,7 @@ pipeline {
                 script {
                     def nodes = nodesByLabel(label: "agentlinux")
                     println(nodes)
+                    println("test")
                     def nodesMap = [:]
                     nodes.each {
                         item ->
@@ -18,6 +19,7 @@ pipeline {
                                     // withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                                         script {
                                             println(nodes)
+                                            println("test")
                                             // def dockerLoginCmd = "docker login -u $DOCKER_USERNAME --password-stdin"
                                             echo "Logging in to Docker"
                                             println("im here")
