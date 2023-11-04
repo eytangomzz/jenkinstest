@@ -1,0 +1,63 @@
+pipeline {
+    agent {
+        label 'agentlinux'
+    }
+
+    stages {
+        stage('List Node Labels') {
+            steps {
+                script {
+                    def nodes = nodesByLabel(label: "agentlinux")
+                    println(nodes)
+                    def nodesMap = [:]
+                    nodes.each {
+                        item ->
+                        nodesMap[item] = {
+                            stage(item) {
+                                node(item) {
+                                    // withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                                        script {
+                                            // def dockerLoginCmd = "docker login -u $DOCKER_USERNAME --password-stdin"
+                                            echo "Logging in to Docker"
+                                            println("im here")
+                                            // bat(script: dockerLoginCmd, returnStatus: true)
+                                            // bat "docker pull imdsoftdevops/testimages:${IMAGE_NAME}"
+                                            // bat 'docker network ls'
+                                            // bat 'docker network create -d nat mynat || cd .'
+                                            // bat 'gpupdate /force'
+                                            // bat 'docker run -v E:/DB:/app/data/backups --platform=linux --name mvsql --network mynat -e TZ=Asia/Jerusalem -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Ts654321" -m 2g -p 1433:1433 -d mcr.microsoft.com/mssql/server || cd .'
+                                            // waitForSqlServer()
+                                            // // Sleep for 2 minutes (120 seconds)
+                                            // //sleep time: 120, unit: 'SECONDS'
+                                            // //TODO: check server online - loop query db
+                                            // bat 'sqlcmd -S localhost -U sa -P Ts654321 -Q "CREATE LOGIN mvadmin WITH PASSWORD = \'sysimd\', CHECK_POLICY = OFF; ALTER SERVER ROLE sysadmin ADD MEMBER mvadmin;"'
+
+
+                                            // bat 'sqlcmd -S localhost -U sa -P Ts654321 -Q "RESTORE DATABASE AUT_DB_EMPI FROM DISK=\'/app/data/backups/AUT_DB_EMPI.bak\' WITH REPLACE, MOVE \'P_EMPI_45_Data\' TO \'/var/opt/mssql/data/AUT_DB_EMPI_DATA.mdf\', MOVE \'P_EMPI_45_Log\' TO \'/var/opt/mssql/data/AUT_DB_EMPI_LOG.ldf\';"'
+                                            // bat 'sqlcmd -S localhost -U sa -P Ts654321 -Q "RESTORE DATABASE AUT_DB_PROD FROM DISK=\'/app/data/backups/AUT_DB_PROD.bak\' WITH REPLACE, MOVE \'icu_data\' TO \'/var/opt/mssql/data/AUT_DB_PROD_DATA.mdf\', MOVE \'MV_TABLES\' TO \'/var/opt/mssql/data/AUT_DB_PROD_TABLES.mdf\', MOVE \'MV_Waves\' TO \'/var/opt/mssql/data/AUT_DB_PROD_WAVES.mdf\', MOVE \'icu_log\' TO \'/var/opt/mssql/data/AUT_DB_PROD_LOG.ldf\';"'
+                                            // //sleep time: 30, unit: 'SECONDS'
+
+                                            // //TODO: check DB online
+                                            // bat 'sqlcmd -S localhost -d AUT_DB_EMPI -U sa -P Ts654321 -Q "update Departments set Name = \'AUT_DB_PROD\',DatabaseName = \'AUT_DB_PROD\', DomainServer = \'mvsql\', SQLDepartmentAlias=\'mvsql\'"'
+                                            // bat 'sqlcmd -S localhost -d AUT_DB_PROD -U sa -P Ts654321 -Q "update DatabaseSettings set EMPIServerName = \'mvsql\', EMPIDatabaseName = \'AUT_DB_EMPI\', SQLDepartmentAlias = \'mvsql\', SQLEMPIAlias = \'mvsql\';"'
+                                            // bat 'sqlcmd -S localhost -d AUT_DB_PROD -U sa -P Ts654321 -Q "Refresh_EMPI_Remote"'
+                                            // bat 'sqlcmd -S localhost -d AUT_DB_PROD -U sa -P Ts654321 -Q "ALTER PROCEDURE [UpdateRecentTemplate] (@Parameter1 INT, @Parameter2 INT, @Parameter3 BIT) AS BEGIN /* Procedure body goes here */ END"'
+
+
+                                        }
+
+                                    
+                                }
+                            }
+                        }
+                    }
+                    // parallel nodesMap
+                  }
+                 
+             }
+        }
+
+                 
+                
+    }
+}
