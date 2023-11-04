@@ -12,14 +12,12 @@ pipeline {
                     println("test")
                     def nodesMap = [:]
                     nodes.each { item ->
-                        println("test2")
                         nodesMap[item] = {
                             stage(item) {
                                 node(item) {
                                     // withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                                         script {
-                                            println(nodes)
-                                            println("test3")
+                                            println(item)
                                             // def dockerLoginCmd = "docker login -u $DOCKER_USERNAME --password-stdin"
                                             echo "Logging in to Docker"
                                             println("im here")
