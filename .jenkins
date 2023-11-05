@@ -76,7 +76,7 @@ pipeline {
                                         def jobNumber = env.BUILD_NUMBER
                                         def containerName = "${item}_${agentName}"
                                         def dockerRunCmd = "docker run --name ${containerName} --image busybox "
-                                        println(agentName,jobNumber,containerName)
+                                        echo "${agentName},${jobNumber}"
                                     }
                                 }   
                             
