@@ -75,21 +75,9 @@ pipeline {
                                         println(item)
                                         def agentName = env.NODE_NAME.replaceAll('[^a-zA-Z0-9]', '_')
                                         println(agentName)
-                                        def jobNumber = env.BUILD_NUMBER
-                                        def containerName = "${IMAGE_NAME}_${item}_${agentName}"
-                                        echo "Logging in to Docker"
-                                        def dockerRunCmd = "docker run --name ${containerName}"
-                                        try {
-                                            echo "Agent ${env.NODE_NAME} is running Run Tests stage for DLL: ${item}"
-                                        } catch (Exception e) {
-                                            echo "Tests for ${item} failed"
-                                        } finally {
-                                            bat "docker rm -f ${containerName}"
-                                            echo "Agent ${env.NODE_NAME} finished running tests for ${item}."
                                     }
-                                }
+                                }   
                             }
-                          }
                         }
                     }
                 }
