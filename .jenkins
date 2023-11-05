@@ -69,7 +69,7 @@ pipeline {
                     println(dllArray)
                     dllArray.each {item ->
                         dllMap[item] = {
-                            node('agent2') {
+                            node('builtin') {
                                     script {
                                         println(item)
                                         def agentName = env.NODE_NAME.replaceAll('[^a-zA-Z0-9]', '_')
