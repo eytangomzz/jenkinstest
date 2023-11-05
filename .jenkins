@@ -75,10 +75,8 @@ pipeline {
                                         def agentName = env.NODE_NAME.replaceAll('[^a-zA-Z0-9]', '_')
                                         def jobNumber = env.BUILD_NUMBER
                                         def containerName = "${item}_${agentName}"
-                                        def dockerRunOptions = ["--name ${containerName}"]
-                                        def containerId = dockerRun(image: "busybox", args: dockerRunOptions)
-                                        sh "docker run ${containerId}"
-                                        echo "${agentName},${jobNumber}"
+                                        sh 'docker run --name ${containerName} --image busybox'
+                                        sh 'echo "${agentName},${jobNumber}"'
                                     }
                                 }   
                             
