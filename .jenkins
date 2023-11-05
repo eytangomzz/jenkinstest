@@ -70,11 +70,12 @@ pipeline {
                     println(dllArray)
                     dllArray.each {item ->
                         dllMap[item] = {
-                            node("builtin") {
+                            node("agent2") {
                                     script {
                                         def agentName = env.NODE_NAME.replaceAll('[^a-zA-Z0-9]', '_')
                                         def jobNumber = env.BUILD_NUMBER
                                         def containerName = "${IMAGE_NAME}_${item}_${agentName}"
+                                        println(agentName)
                                         echo "Logging in to Docker"
                                         def dockerRunCmd = "docker run --name ${containerName}"
                                         try {
