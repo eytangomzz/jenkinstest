@@ -69,6 +69,7 @@ pipeline {
                     println(dllArray)
                     dllArray.each {item ->
                         dllMap[item] = {
+                          stage(item) {
                             node('builtin') {
                                     script {
                                         println(item)
@@ -88,6 +89,7 @@ pipeline {
                                     }
                                 }
                             }
+                          }
                         }
                     }
                 }
