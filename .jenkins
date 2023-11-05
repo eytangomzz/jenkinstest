@@ -77,9 +77,8 @@ pipeline {
                                         def containerName = "${item}"
                                         def DOCKER_IMAGE = 'busybox'
                                         sh 'echo ${jobNumber}, ${item}, $jobNumber'
-                                        //sh 'docker run --name $containerName --image busybox'
                                         def dockerRunCmd = "docker run --name ${containerName} ${DOCKER_IMAGE}"
-                                        bat dockerRunCmd
+                                        sh 'docker run --name ${containerName} --image busybox'
                                         //sh 'echo "${agentName},${jobNumber}"'
                                     }
                                 }   
