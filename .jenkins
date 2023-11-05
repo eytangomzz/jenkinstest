@@ -80,9 +80,10 @@ pipeline {
                             }
                         }
                     }
+                    parallel dllMap
                 }
 
-               // parallel dllMap
+                
             }
         }
     }
