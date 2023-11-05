@@ -61,47 +61,6 @@ pipeline {
                  
                 
     
-    #  stage("Run Tests") {
-    #         steps {
-    #             script {
-    #                 // def dllList = params.dllList
-    #                 def dllArray = ["Parrot", "Cockatiel", "Pigeon", "Pig", "Eagle", "Fly"]
-    #                 def dllMap = [:]
-
-    #                 dllArray.each {item ->
-    #                     dllMap[item] = {
-    #                         node("builtin") {
-    #                             // withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-    #                                 script {
-    #                                     def agentName = env.NODE_NAME.replaceAll('[^a-zA-Z0-9]', '_')
-    #                                     def jobNumber = env.BUILD_NUMBER
-    #                                     def containerName = "${IMAGE_NAME}_${item}_${agentName}"
-    #                                     // def localPath = "${HOST_TEST_RESULTS_DIR}\\${item}_${agentName}_${jobNumber}"
-    #                                     // def dockerLoginCmd = "docker login -u $DOCKER_USERNAME --password-stdin"
-    #                                     echo "Logging in to Docker"
-    #                                     // bat(script: dockerLoginCmd, returnStatus: true)
-
-    #                                     // bat "mkdir ${localPath}"
-
-    #                                     // Start the container
-    #                                     def dockerRunCmd = "docker run --name ${containerName}"
-    #                                     try {
-    #                                         //bat dockerRunCmd
-    #                                         echo "Agent ${env.NODE_NAME} is running Run Tests stage for DLL: ${item}"
-    #                                     } catch (Exception e) {
-    #                                         echo "Tests for ${item} failed"
-    #                                     } finally {
-    #                                         bat "docker rm -f ${containerName}"
-    #                                         echo "Agent ${env.NODE_NAME} finished running tests for ${item}."
-    #                                 }
-    #                             }
-    #                         }
-    #                     }
-    #                 }
-    #             }
-
-    #             parallel dllMap
-    #         }
-    #     }
+     
     }
 }
